@@ -74,7 +74,25 @@
     "CreateNoteLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/notes-api-dev-createNote"
+        "LogGroupName": "/aws/lambda/notes-api-tutorial-dev-createNote"
+      }
+    },
+    "UpdateNoteLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/notes-api-tutorial-dev-updateNote"
+      }
+    },
+    "DeleteNoteLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/notes-api-tutorial-dev-deleteNote"
+      }
+    },
+    "ReadNoteLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/notes-api-tutorial-dev-readNote"
       }
     },
     "IamRoleLambdaExecution": {
@@ -102,7 +120,7 @@
               "Fn::Join": [
                 "-",
                 [
-                  "notes-api",
+                  "notes-api-tutorial",
                   "dev",
                   "lambda"
                 ]
@@ -119,7 +137,7 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/notes-api-dev*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/notes-api-tutorial-dev*:*"
                     }
                   ]
                 },
@@ -130,7 +148,7 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/notes-api-dev*:*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/notes-api-tutorial-dev*:*:*"
                     }
                   ]
                 }
@@ -143,7 +161,7 @@
           "Fn::Join": [
             "-",
             [
-              "notes-api",
+              "notes-api-tutorial",
               "dev",
               {
                 "Ref": "AWS::Region"
@@ -161,11 +179,11 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/notes-api/dev/1706799992262-2024-02-01T15:06:32.262Z/notes-api.zip"
+          "S3Key": "serverless/notes-api-tutorial/dev/1706800730264-2024-02-01T15:18:50.264Z/notes-api-tutorial.zip"
         },
         "Handler": "handler.createNote",
         "Runtime": "nodejs16.x",
-        "FunctionName": "notes-api-dev-createNote",
+        "FunctionName": "notes-api-tutorial-dev-createNote",
         "MemorySize": 1024,
         "Timeout": 6,
         "Role": {
@@ -179,20 +197,125 @@
         "CreateNoteLogGroup"
       ]
     },
-    "CreateNoteLambdaVersion1TFxr0wBJIx6vKj6Nevk9Ti3hcwllOMZGUkexW33o": {
+    "UpdateNoteLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "ServerlessDeploymentBucket"
+          },
+          "S3Key": "serverless/notes-api-tutorial/dev/1706800730264-2024-02-01T15:18:50.264Z/notes-api-tutorial.zip"
+        },
+        "Handler": "handler.updateNote",
+        "Runtime": "nodejs16.x",
+        "FunctionName": "notes-api-tutorial-dev-updateNote",
+        "MemorySize": 1024,
+        "Timeout": 6,
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        }
+      },
+      "DependsOn": [
+        "UpdateNoteLogGroup"
+      ]
+    },
+    "DeleteNoteLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "ServerlessDeploymentBucket"
+          },
+          "S3Key": "serverless/notes-api-tutorial/dev/1706800730264-2024-02-01T15:18:50.264Z/notes-api-tutorial.zip"
+        },
+        "Handler": "handler.deleteNote",
+        "Runtime": "nodejs16.x",
+        "FunctionName": "notes-api-tutorial-dev-deleteNote",
+        "MemorySize": 1024,
+        "Timeout": 6,
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        }
+      },
+      "DependsOn": [
+        "DeleteNoteLogGroup"
+      ]
+    },
+    "ReadNoteLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "ServerlessDeploymentBucket"
+          },
+          "S3Key": "serverless/notes-api-tutorial/dev/1706800730264-2024-02-01T15:18:50.264Z/notes-api-tutorial.zip"
+        },
+        "Handler": "handler.getAllNotes",
+        "Runtime": "nodejs16.x",
+        "FunctionName": "notes-api-tutorial-dev-readNote",
+        "MemorySize": 1024,
+        "Timeout": 6,
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        }
+      },
+      "DependsOn": [
+        "ReadNoteLogGroup"
+      ]
+    },
+    "CreateNoteLambdaVersionfKxG7XLfHRde5CO0dNC2ghIWoqwlvMUPBzbLZjfzA": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "CreateNoteLambdaFunction"
         },
-        "CodeSha256": "UNTQ3uGxlnQUlPAHoXlJrBOKgLeJQiaJZE4nN9h28oo="
+        "CodeSha256": "uYccxA2/GLRPKUmiccOn1O1dJm1aDdeL3OI9o8TsbNE="
+      }
+    },
+    "UpdateNoteLambdaVersionD4m7fJT2ES6fSrMbgU2LJ77Xbq0yxwVb1SoGdySkQ": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "UpdateNoteLambdaFunction"
+        },
+        "CodeSha256": "uYccxA2/GLRPKUmiccOn1O1dJm1aDdeL3OI9o8TsbNE="
+      }
+    },
+    "DeleteNoteLambdaVersionP9T8NkYXCSkOP3ZasUUSxS6Rbn3QfDQRAnxbAuaN25I": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "DeleteNoteLambdaFunction"
+        },
+        "CodeSha256": "uYccxA2/GLRPKUmiccOn1O1dJm1aDdeL3OI9o8TsbNE="
+      }
+    },
+    "ReadNoteLambdaVersioneEfg9tdX4eTnAkU2fhDwYpaXJPNsOv8Ujnlb6mWxw": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "ReadNoteLambdaFunction"
+        },
+        "CodeSha256": "uYccxA2/GLRPKUmiccOn1O1dJm1aDdeL3OI9o8TsbNE="
       }
     },
     "ApiGatewayRestApi": {
       "Type": "AWS::ApiGateway::RestApi",
       "Properties": {
-        "Name": "dev-notes-api",
+        "Name": "dev-notes-api-tutorial",
         "EndpointConfiguration": {
           "Types": [
             "EDGE"
@@ -211,6 +334,18 @@
           ]
         },
         "PathPart": "notes",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
+    "ApiGatewayResourceNotesIdVar": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Ref": "ApiGatewayResourceNotes"
+        },
+        "PathPart": "{id}",
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
         }
@@ -262,7 +397,145 @@
         "CreateNoteLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1706799991017": {
+    "ApiGatewayMethodNotesIdVarPut": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "PUT",
+        "RequestParameters": {},
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceNotesIdVar"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        },
+        "ApiKeyRequired": false,
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region"
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "UpdateNoteLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        },
+        "MethodResponses": []
+      },
+      "DependsOn": [
+        "UpdateNoteLambdaPermissionApiGateway"
+      ]
+    },
+    "ApiGatewayMethodNotesIdVarDelete": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "DELETE",
+        "RequestParameters": {},
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceNotesIdVar"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        },
+        "ApiKeyRequired": false,
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region"
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "DeleteNoteLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        },
+        "MethodResponses": []
+      },
+      "DependsOn": [
+        "DeleteNoteLambdaPermissionApiGateway"
+      ]
+    },
+    "ApiGatewayMethodNotesGet": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "GET",
+        "RequestParameters": {},
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceNotes"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        },
+        "ApiKeyRequired": false,
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region"
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "ReadNoteLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        },
+        "MethodResponses": []
+      },
+      "DependsOn": [
+        "ReadNoteLambdaPermissionApiGateway"
+      ]
+    },
+    "ApiGatewayDeployment1706800729072": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -271,7 +544,10 @@
         "StageName": "dev"
       },
       "DependsOn": [
-        "ApiGatewayMethodNotesPost"
+        "ApiGatewayMethodNotesPost",
+        "ApiGatewayMethodNotesIdVarPut",
+        "ApiGatewayMethodNotesIdVarDelete",
+        "ApiGatewayMethodNotesGet"
       ]
     },
     "CreateNoteLambdaPermissionApiGateway": {
@@ -310,6 +586,117 @@
           ]
         }
       }
+    },
+    "UpdateNoteLambdaPermissionApiGateway": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "UpdateNoteLambdaFunction",
+            "Arn"
+          ]
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "/*/*"
+            ]
+          ]
+        }
+      }
+    },
+    "DeleteNoteLambdaPermissionApiGateway": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "DeleteNoteLambdaFunction",
+            "Arn"
+          ]
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "/*/*"
+            ]
+          ]
+        }
+      }
+    },
+    "ReadNoteLambdaPermissionApiGateway": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "ReadNoteLambdaFunction",
+            "Arn"
+          ]
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "/*/*"
+            ]
+          ]
+        }
+      }
     }
   },
   "Outputs": {
@@ -318,16 +705,43 @@
         "Ref": "ServerlessDeploymentBucket"
       },
       "Export": {
-        "Name": "sls-notes-api-dev-ServerlessDeploymentBucketName"
+        "Name": "sls-notes-api-tutorial-dev-ServerlessDeploymentBucketName"
       }
     },
     "CreateNoteLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "CreateNoteLambdaVersion1TFxr0wBJIx6vKj6Nevk9Ti3hcwllOMZGUkexW33o"
+        "Ref": "CreateNoteLambdaVersionfKxG7XLfHRde5CO0dNC2ghIWoqwlvMUPBzbLZjfzA"
       },
       "Export": {
-        "Name": "sls-notes-api-dev-CreateNoteLambdaFunctionQualifiedArn"
+        "Name": "sls-notes-api-tutorial-dev-CreateNoteLambdaFunctionQualifiedArn"
+      }
+    },
+    "UpdateNoteLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "UpdateNoteLambdaVersionD4m7fJT2ES6fSrMbgU2LJ77Xbq0yxwVb1SoGdySkQ"
+      },
+      "Export": {
+        "Name": "sls-notes-api-tutorial-dev-UpdateNoteLambdaFunctionQualifiedArn"
+      }
+    },
+    "DeleteNoteLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "DeleteNoteLambdaVersionP9T8NkYXCSkOP3ZasUUSxS6Rbn3QfDQRAnxbAuaN25I"
+      },
+      "Export": {
+        "Name": "sls-notes-api-tutorial-dev-DeleteNoteLambdaFunctionQualifiedArn"
+      }
+    },
+    "ReadNoteLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "ReadNoteLambdaVersioneEfg9tdX4eTnAkU2fhDwYpaXJPNsOv8Ujnlb6mWxw"
+      },
+      "Export": {
+        "Name": "sls-notes-api-tutorial-dev-ReadNoteLambdaFunctionQualifiedArn"
       }
     },
     "ServiceEndpoint": {
@@ -353,7 +767,7 @@
         ]
       },
       "Export": {
-        "Name": "sls-notes-api-dev-ServiceEndpoint"
+        "Name": "sls-notes-api-tutorial-dev-ServiceEndpoint"
       }
     }
   }
