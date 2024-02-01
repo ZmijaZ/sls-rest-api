@@ -1,10 +1,32 @@
 'use strict';
+const DynamoDB = require("aws-sdk/clients/dynamodb")
+const documentClient = new DynamoDB.DocumentClient({region: 'us-east-1'})
 
-module.exports.createNote = async (event) => {
-  return {
-    statusCode: 201,
-    body: JSON.stringify("New note created"),
-  };
+
+module.exports.createNote = async (event, context, callback) => {
+  let data = JSON.parse(event.body); //ono sto prosledjujemo POST zahtevu
+  try{
+    const params = {
+      TableName: "notes",
+      Item: {
+        notesId: data.id,
+        title: data.title,
+        body: data.body
+      },
+      ConditionExpression: "attribute_not_exists(notesId)" //ako nema id-a da throw-uje
+    }
+    await documentClient.put(params).promise();
+    callback(null, {
+      statusCode: 201,
+      body: JSON.stringify(data)
+    })
+  } catch(err) {
+    callback(null, {
+      statuscode: 500,
+      body: JSON.stringify(err.message)
+    })
+  }
+  
 
 }
 
