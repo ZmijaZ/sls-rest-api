@@ -56,15 +56,23 @@ module.exports.updateNote = async (event, context, callback) => {
     callback(null, send(500, err.message))
   }
 
-
 }
 
-module.exports.deleteNote = async (event) => {
-  let notesId = event.pathParameters.id
-  return {
-    statusCode: 200,
-    body: JSON.stringify("Deleted note " + notesId),
-  };
+module.exports.deleteNote = async (event, context, callback) => {
+  let notesId = event.pathParameters.id //iz URL cita id...
+  try{
+    const params = {
+      TableName: NOTES_TABLE_NAME,
+      Key: {notesId},
+      ConditionExpression: 'attribute_exists(notesId)'
+    }
+
+    await documentClient.delete(params).promise()
+    callback(null, send(200, notesId))
+
+  } catch(err) {
+    callback(null, send(500, err.message))
+  }
 
 }
 

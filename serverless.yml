@@ -48,6 +48,13 @@ functions:
 
   deleteNote:
     handler: handler.deleteNote
+    environment:
+      NOTES_TABLE_NAME: !Ref notesTable #dohvata ime tabele
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - dynamodb:DeleteItem
+        Resource: !GetAtt notesTable.Arn 
     events:
       - http:
           method: delete
