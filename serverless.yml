@@ -18,10 +18,14 @@ plugins:
   - serverless-iam-roles-per-function
 
 functions:
+  authorizer:
+    handler: authorizer.handler #authorizacija lambdi
+
   createNote:
     handler: handler.createNote
     environment:
       NOTES_TABLE_NAME: !Ref notesTable #dohvata ime tabele
+      # AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1 #koristi Keep-alive da koristi vec otvorene konekcije
     iamRoleStatements:
       - Effect: Allow
         Action:
@@ -31,6 +35,7 @@ functions:
       - http:
           method: post
           path: notes
+          authorizer: authorizer #authorizacija lambdi
 
   updateNote:
     handler: handler.updateNote
@@ -45,6 +50,7 @@ functions:
       - http:
           method: put
           path: notes/{id}
+          authorizer: authorizer #authorizacija lambdi
 
   deleteNote:
     handler: handler.deleteNote
@@ -59,6 +65,7 @@ functions:
       - http:
           method: delete
           path: notes/{id}
+          authorizer: authorizer #authorizacija lambdi
   
   readNote:
     handler: handler.getAllNotes
@@ -73,6 +80,7 @@ functions:
       - http:
           method: get
           path: notes
+          authorizer: authorizer #authorizacija lambdi
     
 
 resources:
