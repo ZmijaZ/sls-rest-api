@@ -179,7 +179,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/notes-api-tutorial/dev/1706800730264-2024-02-01T15:18:50.264Z/notes-api-tutorial.zip"
+          "S3Key": "serverless/notes-api-tutorial/dev/1706801160436-2024-02-01T15:26:00.436Z/notes-api-tutorial.zip"
         },
         "Handler": "handler.createNote",
         "Runtime": "nodejs16.x",
@@ -204,7 +204,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/notes-api-tutorial/dev/1706800730264-2024-02-01T15:18:50.264Z/notes-api-tutorial.zip"
+          "S3Key": "serverless/notes-api-tutorial/dev/1706801160436-2024-02-01T15:26:00.436Z/notes-api-tutorial.zip"
         },
         "Handler": "handler.updateNote",
         "Runtime": "nodejs16.x",
@@ -229,7 +229,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/notes-api-tutorial/dev/1706800730264-2024-02-01T15:18:50.264Z/notes-api-tutorial.zip"
+          "S3Key": "serverless/notes-api-tutorial/dev/1706801160436-2024-02-01T15:26:00.436Z/notes-api-tutorial.zip"
         },
         "Handler": "handler.deleteNote",
         "Runtime": "nodejs16.x",
@@ -254,7 +254,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/notes-api-tutorial/dev/1706800730264-2024-02-01T15:18:50.264Z/notes-api-tutorial.zip"
+          "S3Key": "serverless/notes-api-tutorial/dev/1706801160436-2024-02-01T15:26:00.436Z/notes-api-tutorial.zip"
         },
         "Handler": "handler.getAllNotes",
         "Runtime": "nodejs16.x",
@@ -535,7 +535,7 @@
         "ReadNoteLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1706800729072": {
+    "ApiGatewayDeployment1706801159235": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -696,6 +696,25 @@
             ]
           ]
         }
+      }
+    },
+    "notesTableTutorial": {
+      "Type": "AWS::DynamoDB::Table",
+      "Properties": {
+        "TableName": "notesTutorial",
+        "BillingMode": "PAY_PER_REQUEST",
+        "AttributeDefinitions": [
+          {
+            "AttributeName": "notesId",
+            "AttributeType": "S"
+          }
+        ],
+        "KeySchema": [
+          {
+            "AttributeName": "notesId",
+            "KeyType": "HASH"
+          }
+        ]
       }
     }
   },
