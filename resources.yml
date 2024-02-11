@@ -29,4 +29,12 @@ cognitoUserPoolDomain:
   Type: AWS::Cognito::UserPoolDomain
   Properties:
     UserPoolId: !Ref cognitoUserPool
-    Domain: mynotescddd
+    Domain: mynotescddd # mora globalno unique
+
+# Application parameters
+userPoolIdParam:
+  Type: AWS::SSM::Parameter
+  Properties:
+    Name: /notes/dev/userPoolArn
+    Type: String
+    Value: !GetAtt cognitoUserPool.Arn

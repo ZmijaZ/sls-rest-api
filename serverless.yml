@@ -20,6 +20,9 @@ plugins:
 functions:
   authorizer: #ime lambde
     handler: authorizer.handler #authorizacija lambdi
+    environment: 
+      COGNITO_USERPOOL_ID: !Ref cognitoUserPool
+      COGNITO_WEB_CLIENT_ID: !Ref cognitoUserPoolWebclient
 
   createNote:
     handler: handler.createNote
@@ -82,8 +85,7 @@ functions:
           path: notes
           authorizer: #authorizacija lambdi
             name: userpool_authorizer
-            arn: arn:aws:cognito-idp:us-east-1:721575349657:userpool/us-east-1_8f4h2GgVw
-    
+            arn: ${ssm:/notes/dev/userPoolArn}
 
 resources:
   Resources:
