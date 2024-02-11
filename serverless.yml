@@ -18,7 +18,7 @@ plugins:
   - serverless-iam-roles-per-function
 
 functions:
-  authorizer:
+  authorizer: #ime lambde
     handler: authorizer.handler #authorizacija lambdi
 
   createNote:

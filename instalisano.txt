@@ -1,2 +1,3 @@
 npm i aws-sdk@2
 npm i --save-dev serverless-iam-roles-per-function
+npm i aws-jwt-verify
