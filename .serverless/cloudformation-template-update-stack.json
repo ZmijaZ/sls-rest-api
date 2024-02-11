@@ -185,7 +185,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/notes-api-tutorial/dev/1707673308017-2024-02-11T17:41:48.017Z/notes-api-tutorial.zip"
+          "S3Key": "serverless/notes-api-tutorial/dev/1707674765693-2024-02-11T18:06:05.693Z/notes-api-tutorial.zip"
         },
         "Handler": "authorizer.handler",
         "Runtime": "nodejs16.x",
@@ -210,7 +210,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/notes-api-tutorial/dev/1707673308017-2024-02-11T17:41:48.017Z/notes-api-tutorial.zip"
+          "S3Key": "serverless/notes-api-tutorial/dev/1707674765693-2024-02-11T18:06:05.693Z/notes-api-tutorial.zip"
         },
         "Handler": "handler.createNote",
         "Runtime": "nodejs16.x",
@@ -243,7 +243,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/notes-api-tutorial/dev/1707673308017-2024-02-11T17:41:48.017Z/notes-api-tutorial.zip"
+          "S3Key": "serverless/notes-api-tutorial/dev/1707674765693-2024-02-11T18:06:05.693Z/notes-api-tutorial.zip"
         },
         "Handler": "handler.updateNote",
         "Runtime": "nodejs16.x",
@@ -276,7 +276,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/notes-api-tutorial/dev/1707673308017-2024-02-11T17:41:48.017Z/notes-api-tutorial.zip"
+          "S3Key": "serverless/notes-api-tutorial/dev/1707674765693-2024-02-11T18:06:05.693Z/notes-api-tutorial.zip"
         },
         "Handler": "handler.deleteNote",
         "Runtime": "nodejs16.x",
@@ -309,7 +309,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/notes-api-tutorial/dev/1707673308017-2024-02-11T17:41:48.017Z/notes-api-tutorial.zip"
+          "S3Key": "serverless/notes-api-tutorial/dev/1707674765693-2024-02-11T18:06:05.693Z/notes-api-tutorial.zip"
         },
         "Handler": "handler.getAllNotes",
         "Runtime": "nodejs16.x",
@@ -335,54 +335,54 @@
         "ReadNoteLogGroup"
       ]
     },
-    "AuthorizerLambdaVersionGyPSm7xi6fWucAlDqlbdhELlrZ1bjR3bG8vUrbIf9Vs": {
+    "AuthorizerLambdaVersionywwz9tXu1Cf8TpsE31Rim84GDrI6iHmkVQ6l3dn0": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "AuthorizerLambdaFunction"
         },
-        "CodeSha256": "J6gn2nfVEOkrED4z14DnoGWXlloCRoxpmQPgGlAo7X0="
+        "CodeSha256": "/mLDImusYvNOT7LPA0xGaNBnlfWFi6Rp6AR1V5DsOu4="
       }
     },
-    "CreateNoteLambdaVersionyK25zgY1Z6xqrEDhN2yl2SBtsCBNvvuMPKPptPso": {
+    "CreateNoteLambdaVersionVjZmlbO2hbs96qMkPHoj86t5PgpTlnv2VnKyKEBXPM": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "CreateNoteLambdaFunction"
         },
-        "CodeSha256": "J6gn2nfVEOkrED4z14DnoGWXlloCRoxpmQPgGlAo7X0="
+        "CodeSha256": "/mLDImusYvNOT7LPA0xGaNBnlfWFi6Rp6AR1V5DsOu4="
       }
     },
-    "UpdateNoteLambdaVersion8k2bguVY1A0lsJqMAJWizQvtz93rKozsTavrS6x46U": {
+    "UpdateNoteLambdaVersiongodTs9GeRJsRNBTyeIioDtIDBA8eUYlO8V2v1ApnA": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "UpdateNoteLambdaFunction"
         },
-        "CodeSha256": "J6gn2nfVEOkrED4z14DnoGWXlloCRoxpmQPgGlAo7X0="
+        "CodeSha256": "/mLDImusYvNOT7LPA0xGaNBnlfWFi6Rp6AR1V5DsOu4="
       }
     },
-    "DeleteNoteLambdaVersion5B54vKoxidydHt39sPBQT9g52wzlF4GnkhlexfSfg": {
+    "DeleteNoteLambdaVersionjR941CXhgfz7PO17vwL1EC60BlMxA4FRmTRS0deR5CE": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "DeleteNoteLambdaFunction"
         },
-        "CodeSha256": "J6gn2nfVEOkrED4z14DnoGWXlloCRoxpmQPgGlAo7X0="
+        "CodeSha256": "/mLDImusYvNOT7LPA0xGaNBnlfWFi6Rp6AR1V5DsOu4="
       }
     },
-    "ReadNoteLambdaVersionD0LS3pLXBWHQbXsDYiOI0DWmsxpbif2Lyj5iKLwVK3U": {
+    "ReadNoteLambdaVersionUoUQRXcoAT7ovW8hQMDwiKdqKxH1w9dMzPy3perCrLg": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "ReadNoteLambdaFunction"
         },
-        "CodeSha256": "J6gn2nfVEOkrED4z14DnoGWXlloCRoxpmQPgGlAo7X0="
+        "CodeSha256": "/mLDImusYvNOT7LPA0xGaNBnlfWFi6Rp6AR1V5DsOu4="
       }
     },
     "ApiGatewayRestApi": {
@@ -577,9 +577,9 @@
           "Ref": "ApiGatewayRestApi"
         },
         "ApiKeyRequired": false,
-        "AuthorizationType": "CUSTOM",
+        "AuthorizationType": "COGNITO_USER_POOLS",
         "AuthorizerId": {
-          "Ref": "AuthorizerApiGatewayAuthorizer"
+          "Ref": "UserpoolUnderscoreauthorizerApiGatewayAuthorizer"
         },
         "Integration": {
           "IntegrationHttpMethod": "POST",
@@ -610,7 +610,7 @@
         },
         "MethodResponses": []
       },
-      "DependsOn": "AuthorizerApiGatewayAuthorizer"
+      "DependsOn": "UserpoolUnderscoreauthorizerApiGatewayAuthorizer"
     },
     "AuthorizerApiGatewayAuthorizer": {
       "Type": "AWS::ApiGateway::Authorizer",
@@ -646,7 +646,22 @@
         "Type": "TOKEN"
       }
     },
-    "ApiGatewayDeployment1707673305076": {
+    "UserpoolUnderscoreauthorizerApiGatewayAuthorizer": {
+      "Type": "AWS::ApiGateway::Authorizer",
+      "Properties": {
+        "AuthorizerResultTtlInSeconds": 300,
+        "IdentitySource": "method.request.header.Authorization",
+        "Name": "userpool_authorizer",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        },
+        "Type": "COGNITO_USER_POOLS",
+        "ProviderARNs": [
+          "arn:aws:cognito-idp:us-east-1:721575349657:userpool/us-east-1_8f4h2GgVw"
+        ]
+      }
+    },
+    "ApiGatewayDeployment1707674762898": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -1188,6 +1203,30 @@
           }
         ]
       }
+    },
+    "cognitoUserPool": {
+      "Type": "AWS::Cognito::UserPool",
+      "Properties": {
+        "UserPoolName": "MyNotesUP"
+      }
+    },
+    "cognitoUserPoolWebclient": {
+      "Type": "AWS::Cognito::UserPoolClient",
+      "Properties": {
+        "UserPoolId": {
+          "Ref": "cognitoUserPool"
+        },
+        "ClientName": "web"
+      }
+    },
+    "cognitoUserPoolDomain": {
+      "Type": "AWS::Cognito::UserPoolDomain",
+      "Properties": {
+        "UserPoolId": {
+          "Ref": "cognitoUserPool"
+        },
+        "Domain": "mynotescddd"
+      }
     }
   },
   "Outputs": {
@@ -1202,7 +1241,7 @@
     "AuthorizerLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "AuthorizerLambdaVersionGyPSm7xi6fWucAlDqlbdhELlrZ1bjR3bG8vUrbIf9Vs"
+        "Ref": "AuthorizerLambdaVersionywwz9tXu1Cf8TpsE31Rim84GDrI6iHmkVQ6l3dn0"
       },
       "Export": {
         "Name": "sls-notes-api-tutorial-dev-AuthorizerLambdaFunctionQualifiedArn"
@@ -1211,7 +1250,7 @@
     "CreateNoteLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "CreateNoteLambdaVersionyK25zgY1Z6xqrEDhN2yl2SBtsCBNvvuMPKPptPso"
+        "Ref": "CreateNoteLambdaVersionVjZmlbO2hbs96qMkPHoj86t5PgpTlnv2VnKyKEBXPM"
       },
       "Export": {
         "Name": "sls-notes-api-tutorial-dev-CreateNoteLambdaFunctionQualifiedArn"
@@ -1220,7 +1259,7 @@
     "UpdateNoteLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "UpdateNoteLambdaVersion8k2bguVY1A0lsJqMAJWizQvtz93rKozsTavrS6x46U"
+        "Ref": "UpdateNoteLambdaVersiongodTs9GeRJsRNBTyeIioDtIDBA8eUYlO8V2v1ApnA"
       },
       "Export": {
         "Name": "sls-notes-api-tutorial-dev-UpdateNoteLambdaFunctionQualifiedArn"
@@ -1229,7 +1268,7 @@
     "DeleteNoteLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "DeleteNoteLambdaVersion5B54vKoxidydHt39sPBQT9g52wzlF4GnkhlexfSfg"
+        "Ref": "DeleteNoteLambdaVersionjR941CXhgfz7PO17vwL1EC60BlMxA4FRmTRS0deR5CE"
       },
       "Export": {
         "Name": "sls-notes-api-tutorial-dev-DeleteNoteLambdaFunctionQualifiedArn"
@@ -1238,7 +1277,7 @@
     "ReadNoteLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "ReadNoteLambdaVersionD0LS3pLXBWHQbXsDYiOI0DWmsxpbif2Lyj5iKLwVK3U"
+        "Ref": "ReadNoteLambdaVersionUoUQRXcoAT7ovW8hQMDwiKdqKxH1w9dMzPy3perCrLg"
       },
       "Export": {
         "Name": "sls-notes-api-tutorial-dev-ReadNoteLambdaFunctionQualifiedArn"

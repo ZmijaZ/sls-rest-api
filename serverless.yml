@@ -80,20 +80,11 @@ functions:
       - http:
           method: get
           path: notes
-          authorizer: authorizer #authorizacija lambdi
+          authorizer: #authorizacija lambdi
+            name: userpool_authorizer
+            arn: arn:aws:cognito-idp:us-east-1:721575349657:userpool/us-east-1_8f4h2GgVw
     
 
 resources:
   Resources:
-    notesTable:   #imee 
-      Type: AWS::DynamoDB::Table
-      Properties:
-        TableName: notes
-        BillingMode: PAY_PER_REQUEST
-        AttributeDefinitions:
-          - AttributeName: notesId
-            AttributeType: S #STRINg
-        KeySchema:
-          - AttributeName: notesId
-            KeyType: HASH
-
+    ${file(resources.yml)} #linkovanje drugog .yml
